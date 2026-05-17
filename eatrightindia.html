@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eat Right India — Know What's Really In Your Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #1B4332;
+    --green-mid: #2D6A4F;
+    --green-bright: #40916C;
+    --green-light: #74C69D;
+    --green-pale: #D8F3DC;
+    --green-faint: #F0FAF4;
+    --amber: #E9952A;
+    --amber-light: #FFF3DC;
+    --cream: #FDFAF5;
+    --text-dark: #1A2A1E;
+    --text-mid: #3D5C46;
+    --text-light: #6B8F71;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(27,67,50,0.10);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(253,250,245,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(27,67,50,0.08);
+    padding: 0 5%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--green-deep);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1.1;
+  }
+
+  .nav-logo-text span {
+    display: block;
+    font-size: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green-deep); }
+
+  .nav-cta {
+    background: var(--green-deep) !important;
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 14px !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-mid) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 68px 5% 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--green-pale) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-pale);
+    color: var(--green-deep);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green-bright);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 4.5vw, 58px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--green-deep);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-bright);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 440px;
+    font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--green-deep);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--green-deep);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 4px;
+    border-bottom: 1.5px solid var(--green-light);
+    transition: border-color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--green-deep); }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(27,67,50,0.10);
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* HERO IMAGE SIDE */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-card-main {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    z-index: 2;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .card-product-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--green-pale);
+  }
+
+  .card-product-icon {
+    width: 48px; height: 48px;
+    background: var(--green-faint);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .card-product-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--green-deep);
+  }
+
+  .card-product-sub {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  .card-score {
+    margin-left: auto;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #FCEBEB;
+    color: #A32D2D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .card-nutrient {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card-nutrient-label {
+    font-size: 12px;
+    color: var(--text-light);
+    width: 72px;
+    flex-shrink: 0;
+  }
+
+  .card-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--green-pale);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .card-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  .card-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .badge-high { background: #FCEBEB; color: #A32D2D; }
+  .badge-moderate { background: #FFF3DC; color: #854F0B; }
+  .badge-safe { background: #EAF3DE; color: #3B6D11; }
+
+  .card-alt-section {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--green-pale);
+  }
+
+  .card-alt-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  .card-alt-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    background: var(--green-faint);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--green-deep);
+    font-weight: 500;
+  }
+
+  .float-badge {
+    position: absolute;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 10px 14px;
+    box-shadow: 0 8px 24px rgba(27,67,50,0.12);
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+    white-space: nowrap;
+  }
+
+  .float-badge-1 { top: 10px; left: -20px; color: var(--green-deep); animation: floatCard 3.5s ease-in-out infinite 0.5s; }
+  .float-badge-2 { bottom: 30px; right: -10px; color: #854F0B; animation: floatCard 4.5s ease-in-out infinite 1s; }
+
+  /* HOW IT WORKS */
+  .section {
+    padding: 100px 5%;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    color: var(--green-deep);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  .section-header { margin-bottom: 60px; }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--green-faint); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .step-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+  .step-number {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--green-pale);
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .step-icon {
+    width: 48px; height: 48px;
+    background: var(--green-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .feature-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(27,67,50,0.06);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .feature-card:hover { border-color: var(--green-light); transform: translateY(-2px); }
+
+  .feature-card.featured {
+    background: var(--green-deep);
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+    background: var(--green-faint);
+  }
+
+  .feature-card.featured .feature-icon { background: rgba(255,255,255,0.12); }
+
+  .feature-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+  }
+
+  .feature-card.featured .feature-title { color: var(--white); font-size: 24px; font-family: 'Fraunces', serif; }
+
+  .feature-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .feature-card.featured .feature-desc { color: rgba(255,255,255,0.7); font-size: 15px; }
+
+  .featured-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .featured-pill {
+    background: rgba(255,255,255,0.10);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* UPLOAD SECTION */
+  .upload-section {
+    background: var(--green-deep);
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .upload-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(116,198,157,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .upload-section .section-title { color: var(--white); }
+  .upload-section .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 48px; }
+
+  .upload-box {
+    background: rgba(255,255,255,0.06);
+    border: 1.5px dashed rgba(255,255,255,0.25);
+    border-radius: 24px;
+    padding: 56px 40px;
+    max-width: 560px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
+  }
+
+  .upload-box:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  .upload-box input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .upload-icon {
+    width: 72px; height: 72px;
+    background: rgba(255,255,255,0.10);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 30px;
+  }
+
+  .upload-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .upload-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 24px;
+  }
+
+  .upload-btn {
+    background: var(--amber);
+    color: var(--white);
+    padding: 13px 32px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .upload-btn:hover { background: #d4851f; transform: translateY(-1px); }
+
+  .upload-examples {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .example-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .example-pill:hover { background: rgba(255,255,255,0.14); }
+
+  /* RESULT AREA */
+  #result-area {
+    max-width: 660px;
+    margin: 40px auto 0;
+    display: none;
+  }
+
+  .result-wrapper {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 32px;
+    text-align: left;
+  }
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--green-pale);
+    margin-bottom: 20px;
+  }
+
+  .result-product-icon {
+    width: 52px; height: 52px;
+    background: var(--green-faint);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .result-product-name { font-size: 16px; font-weight: 600; color: var(--green-deep); }
+  .result-product-sub { font-size: 12px; color: var(--text-light); margin-top: 3px; }
+
+  .result-score {
+    margin-left: auto;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .result-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .result-tab {
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    color: var(--text-light);
+    background: transparent;
+    transition: all 0.15s;
+  }
+
+  .result-tab.active {
+    background: var(--green-faint);
+    color: var(--green-deep);
+    border-color: var(--green-pale);
+  }
+
+  .nutrient-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .nutrient-label { font-size: 13px; color: var(--text-light); width: 100px; flex-shrink: 0; }
+  .nutrient-val { font-size: 14px; font-weight: 600; color: var(--green-deep); min-width: 52px; }
+
+  .bar-wrap { flex: 1; height: 6px; background: var(--green-pale); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+
+  .verdict-box {
+    background: var(--green-faint);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    margin-bottom: 12px;
+  }
+
+  .alt-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--green-faint);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+
+  .alt-item-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .alt-item-name { font-size: 14px; font-weight: 600; color: var(--green-deep); margin-bottom: 3px; }
+  .alt-item-reason { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  .loading-state {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+  }
+
+  .spinner {
+    width: 32px; height: 32px;
+    border: 2.5px solid rgba(255,255,255,0.2);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* INDIAN EXAMPLES */
+  .examples-section { background: var(--cream); }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .example-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(27,67,50,0.06);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .example-card:hover {
+    border-color: var(--green-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(27,67,50,0.08);
+  }
+
+  .example-emoji { font-size: 32px; margin-bottom: 12px; display: block; }
+  .example-name { font-size: 15px; font-weight: 600; color: var(--green-deep); margin-bottom: 6px; }
+  .example-sub { font-size: 13px; color: var(--text-light); margin-bottom: 14px; }
+
+  .example-score-bar {
+    height: 4px;
+    background: var(--green-pale);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .example-score-fill { height: 100%; border-radius: 2px; }
+  .example-score-label { font-size: 11px; color: var(--text-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-deep);
+    padding: 56px 5% 32px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .footer-brand-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    max-width: 280px;
+  }
+
+  .footer-col-title {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-disclaimer {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+  }
+
+  .footer-disclaimer strong {
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .fssai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 100px;
+    padding: 5px 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; }
+    .hero-visual { display: none; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .feature-card.featured { grid-column: 1; grid-template-columns: 1fr; }
+    .examples-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-logo-text">
+      Eat Right India
+      <span>Know what's really inside</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#examples">Examples</a></li>
+    <li><a href="#analyse" class="nav-cta">Analyse a label →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🇮🇳 Built for Indian packaged foods</div>
+    <h1>Know what's <em>really</em> in your food</h1>
+    <p class="hero-sub">Upload any food label photo. Get instant plain-English nutrition insights, daily intake context, and healthy Indian alternatives — all powered by AI.</p>
+    <div class="hero-buttons">
+      <a href="#analyse" class="btn-primary">📸 Upload a label →</a>
+      <a href="#how" class="btn-secondary">See how it works ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">FSSAI</div>
+        <div class="stat-label">Indian daily limits used</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Nutrients analysed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Natural alternatives suggested</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="float-badge float-badge-1">🚨 890mg sodium — that's 37% of your day!</div>
+    <div class="hero-card-main">
+      <div class="card-product-row">
+        <div class="card-product-icon">🍜</div>
+        <div>
+          <div class="card-product-name">Maggi 2-Minute Noodles</div>
+          <div class="card-product-sub">Nestle India · 70g pack</div>
+        </div>
+        <div class="card-score">38</div>
+      </div>
+      <div class="card-nutrient">
+        <span class="card-nutrient-label">Sodium</span>
+        <div class="card-bar-wrap"><div class="card-bar-fill" style="width:70%;background:#E24B4A;"></div></div>
+        <span class="card-badge badge-high">High</span>
+      </div>
+      <div class="card-nutrient">
+        <span class="card-nutrient-label">Total fat</span>
+        <div class="card-bar-wrap"><div class="card-bar-fill" style="width:55%;background:#EF9F27;"></div></div>
+        <span class="card-badge badge-moderate">Moderate</span>
+      </div>
+      <div class="card-nutrient">
+        <span class="card-nutrient-label">Sugar</span>
+        <div class="card-bar-wrap"><div class="card-bar-fill" style="width:15%;background:#639922;"></div></div>
+        <span class="card-badge badge-safe">Safe</span>
+      </div>
+      <div class="card-alt-section">
+        <div class="card-alt-title">🥕 Eat this instead</div>
+        <div class="card-alt-item">🌾 Ragi porridge — high calcium, 3x more filling</div>
+        <div class="card-alt-item">🍚 Poha with vegetables — lower sodium, more fibre</div>
+      </div>
+    </div>
+    <div class="float-badge float-badge-2">✅ Healthy swap: Ragi porridge</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section" id="how">
+  <div class="section-header fade-up">
+    <div class="section-label">Simple process</div>
+    <h2 class="section-title">Three steps to food clarity</h2>
+    <p class="section-sub">No sign-up. No app download. Just upload and understand what you're eating in seconds.</p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card fade-up">
+      <span class="step-number">01</span>
+      <div class="step-icon">📸</div>
+      <div class="step-title">Upload your label photo</div>
+      <p class="step-desc">Take a photo of the nutrition label on the back of any Indian packaged food — Maggi, Parle-G, Paperboat, MTR, anything.</p>
+    </div>
+    <div class="step-card fade-up" style="transition-delay:0.1s">
+      <span class="step-number">02</span>
+      <div class="step-icon">🔍</div>
+      <div class="step-title">AI reads and analyses</div>
+      <p class="step-desc">Our AI reads the label, extracts every nutrient, and checks it against FSSAI recommended daily intake limits for Indian adults.</p>
+    </div>
+    <div class="step-card fade-up" style="transition-delay:0.2s">
+      <span class="step-number">03</span>
+      <div class="step-icon">🥦</div>
+      <div class="step-title">Get insights + alternatives</div>
+      <p class="step-desc">See plain-English verdict, daily intake context, and 3 natural fruit or vegetable alternatives that serve your body better.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-header fade-up">
+    <div class="section-label">What makes us different</div>
+    <h2 class="section-title">Built for the Indian kitchen</h2>
+    <p class="section-sub">Most nutrition tools are built for Western diets. We use Indian food context, Indian daily limits, Indian alternatives.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card featured fade-up">
+      <div>
+        <div class="feature-icon">🇮🇳</div>
+        <div class="feature-title">Indian nutritional lens</div>
+        <p class="feature-desc">We use FSSAI (Food Safety and Standards Authority of India) guidelines — not US FDA or UK NHS. Your daily limits are calibrated for you. We flag Indian-specific concerns: maida, palm oil, added colours, MSG.</p>
+      </div>
+      <div class="featured-visual">
+        <div class="featured-pill">🌾 Maida content flagged</div>
+        <div class="featured-pill">🫙 Palm oil detected</div>
+        <div class="featured-pill">🧂 Sodium vs Indian roti</div>
+        <div class="featured-pill">🎨 Added colours warned</div>
+      </div>
+    </div>
+    <div class="feature-card fade-up">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Daily intake reality check</div>
+      <p class="feature-desc">We don't just show "28g sugar." We tell you that's 112% of your daily limit — in one drink.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.1s">
+      <div class="feature-icon">🥕</div>
+      <div class="feature-title">Natural food alternatives</div>
+      <p class="feature-desc">Every analysis ends with 3 real fruits or vegetables you can eat instead — with specific reasons why they're better.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.15s">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Instant, no sign-up needed</div>
+      <p class="feature-desc">Upload a photo, get results in seconds. No account, no data stored, no tracking. Your photo never leaves the session.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.2s">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Zero data storage</div>
+      <p class="feature-desc">Stateless by design. Your food label photo is analysed and never saved. DPDP Act compliant from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLES -->
+<section class="section examples-section" id="examples">
+  <div class="section-header fade-up">
+    <div class="section-label">Try these</div>
+    <h2 class="section-title">See what's really inside</h2>
+    <p class="section-sub">Click any example to see a full analysis — no upload needed.</p>
+  </div>
+  <div class="examples-grid">
+    <div class="example-card fade-up" onclick="scrollAndLoad('maggi')">
+      <span class="example-emoji">🍜</span>
+      <div class="example-name">Maggi 2-Minute Noodles</div>
+      <div class="example-sub">Nestle India · 70g pack</div>
+      <div class="example-score-bar"><div class="example-score-fill" style="width:38%;background:#E24B4A;"></div></div>
+      <div class="example-score-label">Health score: 38/100 — Poor</div>
+    </div>
+    <div class="example-card fade-up" style="transition-delay:0.1s" onclick="scrollAndLoad('biscuit')">
+      <span class="example-emoji">🍪</span>
+      <div class="example-name">Parle-G Glucose Biscuits</div>
+      <div class="example-sub">Parle Products · 100g</div>
+      <div class="example-score-bar"><div class="example-score-fill" style="width:42%;background:#EF9F27;"></div></div>
+      <div class="example-score-label">Health score: 42/100 — Moderate</div>
+    </div>
+    <div class="example-card fade-up" style="transition-delay:0.2s" onclick="scrollAndLoad('juice')">
+      <span class="example-emoji">🥭</span>
+      <div class="example-name">Paperboat Aamras</div>
+      <div class="example-sub">Hector Beverages · 250ml</div>
+      <div class="example-score-bar"><div class="example-score-fill" style="width:35%;background:#E24B4A;"></div></div>
+      <div class="example-score-label">Health score: 35/100 — Poor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYSE / UPLOAD SECTION -->
+<section class="upload-section" id="analyse">
+  <div class="section-label" style="color:var(--green-light);margin-bottom:12px;">Ready to check?</div>
+  <h2 class="section-title" style="margin-bottom:16px;">Upload your food label</h2>
+  <p class="section-sub">Works with any Indian packaged food. Just photograph the nutrition label on the back.</p>
+
+  <div class="upload-box" id="upload-box">
+    <input type="file" accept="image/*" id="file-input" onchange="handleUpload(this)">
+    <div class="upload-icon">📸</div>
+    <div class="upload-title">Drop your label photo here</div>
+    <p class="upload-desc">Or click to choose from your phone or computer</p>
+    <button class="upload-btn" onclick="document.getElementById('file-input').click(); event.stopPropagation();">
+      Choose photo →
+    </button>
+  </div>
+
+  <div class="upload-examples">
+    <span style="font-size:13px;color:rgba(255,255,255,0.4);margin-right:4px;">Try an example:</span>
+    <span class="example-pill" onclick="scrollAndLoad('maggi')">🍜 Maggi</span>
+    <span class="example-pill" onclick="scrollAndLoad('biscuit')">🍪 Parle-G</span>
+    <span class="example-pill" onclick="scrollAndLoad('juice')">🥭 Paperboat</span>
+  </div>
+
+  <div id="result-area">
+    <div id="loading-state" class="loading-state" style="display:none;">
+      <div class="spinner"></div>
+      <div id="loading-text">Reading your label...</div>
+    </div>
+    <div class="result-wrapper" id="result-wrapper" style="display:none;">
+      <div class="result-header">
+        <div class="result-product-icon" id="r-icon">🍜</div>
+        <div>
+          <div class="result-product-name" id="r-name">—</div>
+          <div class="result-product-sub" id="r-sub">—</div>
+        </div>
+        <div class="result-score" id="r-score">—</div>
+      </div>
+      <div class="result-tabs">
+        <button class="result-tab active" onclick="showTab('nutrients',this)">Nutrition</button>
+        <button class="result-tab" onclick="showTab('verdict',this)">Verdict</button>
+        <button class="result-tab" onclick="showTab('alternatives',this)">Alternatives</button>
+      </div>
+      <div id="tab-nutrients"><div id="nutrients-list"></div></div>
+      <div id="tab-verdict" style="display:none;">
+        <div class="verdict-box" id="verdict-text"></div>
+        <div class="verdict-box" id="indian-text"></div>
+      </div>
+      <div id="tab-alternatives" style="display:none;"><div id="alt-list"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">🌿 Eat Right India</div>
+      <p class="footer-brand-desc">AI-powered nutrition label analysis built specifically for Indian packaged foods. Know what's really inside before you eat.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#analyse">Analyse a label</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">About</div>
+      <ul class="footer-links">
+        <li><a href="#">About this tool</a></li>
+        <li><a href="#">FSSAI guidelines</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-disclaimer">
+    <strong>Disclaimer:</strong> This tool is powered by AI and is for informational purposes only. It is not reviewed or endorsed by any healthcare professional. Please consult a qualified nutritionist or doctor before making any dietary changes. <br>
+    Nutritional reference values are based on <strong>FSSAI daily intake guidelines</strong>. Individual requirements may vary based on age, health conditions, and lifestyle.
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Eat Right India. All rights reserved.</span>
+    <span class="fssai-badge">📋 Uses FSSAI daily intake reference values</span>
+    <span>Made with 🌿 for Indian consumers</span>
+  </div>
+</footer>
+
+<script>
+const EXAMPLES = {
+  maggi: { icon:'🍜', name:'Maggi 2-Minute Noodles (70g)', sub:'Nestle India · Instant noodles', score:38, nutrients:[
+    {name:'Calories',value:'312 kcal',pct:16,status:'moderate',context:'16% of daily 2000 kcal limit'},
+    {name:'Total fat',value:'13.2g',pct:68,status:'high',context:'68% of daily 19g limit — very high'},
+    {name:'Sodium',value:'890mg',pct:37,status:'high',context:'37% of daily 2400mg limit in one pack!'},
+    {name:'Sugar',value:'2.1g',pct:8,status:'safe',context:'8% of daily 25g limit — fine'},
+    {name:'Protein',value:'7.4g',pct:15,status:'safe',context:'15% of daily 50g need'},
+    {name:'Carbs',value:'45g',pct:15,status:'moderate',context:'15% of daily 300g allowance'},
+  ], verdict:'Maggi is high in sodium and saturated fat — one packet gives you over a third of your daily salt limit. The refined maida base offers almost no fibre.', indian:'Most Indians eat 2 packets at once, taking sodium to 74% of the daily limit from one meal. A home-cooked dal-rice has roughly 200–400mg sodium.', alts:[
+    {icon:'🌾',name:'Ragi porridge',reason:'High calcium, iron, and fibre. Keeps you full 3x longer than Maggi. Easy to make in 5 minutes.'},
+    {icon:'🍚',name:'Poha with vegetables',reason:'Lower sodium, higher B vitamins, and added fibre from the veggies. Genuinely fast to make.'},
+    {icon:'🥣',name:'Oats upma with vegetables',reason:'Beta-glucan in oats helps manage blood sugar. Much lower saturated fat.'},
+  ]},
+  biscuit: { icon:'🍪', name:'Parle-G Glucose Biscuits (100g)', sub:'Parle Products · Biscuits', score:42, nutrients:[
+    {name:'Calories',value:'450 kcal',pct:22,status:'high',context:'22% of daily 2000 kcal in 100g'},
+    {name:'Total fat',value:'11g',pct:58,status:'high',context:'58% of daily 19g limit'},
+    {name:'Sodium',value:'430mg',pct:18,status:'moderate',context:'18% of daily 2400mg limit'},
+    {name:'Sugar',value:'24g',pct:96,status:'high',context:'96% of daily 25g limit — nearly the whole day!'},
+    {name:'Protein',value:'6.7g',pct:13,status:'safe',context:'13% of daily 50g need'},
+    {name:'Fibre',value:'0.9g',pct:3,status:'safe',context:'Very low — refined flour has almost no fibre'},
+  ], verdict:'Parle-G is essentially sugar and refined flour with palm oil. The "glucose" branding sounds energising, but 100g contains nearly a full day\'s sugar limit.', indian:'Often given to children with chai — together that crosses the daily sugar limit before noon. A banana or homemade murmura chivda is a far better tea-time snack.', alts:[
+    {icon:'🍌',name:'Banana or apple',reason:'Natural sugars come with fibre, potassium, and vitamins. The fibre slows sugar absorption — no spike, no crash.'},
+    {icon:'🫘',name:'Roasted chana',reason:'High protein, high fibre, low glycaemic index. The best guilt-free crunchy snack in Indian cuisine.'},
+    {icon:'🌴',name:'Dates — 2 to 3 pieces',reason:'Naturally sweet with iron and fibre. A far better glucose source than a biscuit.'},
+  ]},
+  juice: { icon:'🥭', name:'Paperboat Aamras (250ml)', sub:'Hector Beverages · Fruit drink', score:35, nutrients:[
+    {name:'Calories',value:'135 kcal',pct:7,status:'moderate',context:'7% of daily 2000 kcal'},
+    {name:'Total fat',value:'0.1g',pct:0,status:'safe',context:'Negligible fat — good'},
+    {name:'Sodium',value:'55mg',pct:2,status:'safe',context:'Low sodium — fine'},
+    {name:'Sugar',value:'30g',pct:120,status:'high',context:'120% of daily 25g limit — in one drink!'},
+    {name:'Protein',value:'0.4g',pct:1,status:'safe',context:'Almost no protein'},
+    {name:'Vitamin C',value:'12mg',pct:20,status:'safe',context:'20% of daily Vitamin C need'},
+  ], verdict:'Paperboat Aamras looks healthy because it\'s mango-based, but one pack contains 30g of sugar — more than your entire daily limit. Unlike a real mango, it has no fibre.', indian:'Many parents give this to children thinking it\'s healthier than cola. Nutritionally, it has as much sugar as a Pepsi. A real mango has fibre that slows absorption — this drink removes it.', alts:[
+    {icon:'🥭',name:'One whole Alphonso mango',reason:'Same mango taste, half the sugar, and fibre that slows absorption. You also get Vitamin A and antioxidants.'},
+    {icon:'🥥',name:'Fresh coconut water',reason:'Naturally sweet, only 6g sugar per 250ml, rich in potassium electrolytes. The original Indian summer drink.'},
+    {icon:'🍋',name:'Nimbu pani (lemon water)',reason:'Zero added sugar, Vitamin C, and digestive benefits. Add a pinch of black salt for taste.'},
+  ]},
+};
+
+function getScoreStyle(s) {
+  if(s>=70) return {bg:'#EAF3DE',color:'#3B6D11'};
+  if(s>=45) return {bg:'#FFF3DC',color:'#854F0B'};
+  return {bg:'#FCEBEB',color:'#A32D2D'};
+}
+
+function getBarColor(status) {
+  if(status==='safe') return '#639922';
+  if(status==='moderate') return '#EF9F27';
+  return '#E24B4A';
+}
+
+function renderResult(data) {
+  document.getElementById('loading-state').style.display = 'none';
+  const rw = document.getElementById('result-wrapper');
+  rw.style.display = 'block';
+  document.getElementById('result-area').style.display = 'block';
+
+  document.getElementById('r-icon').textContent = data.icon || '🍱';
+  document.getElementById('r-name').textContent = data.name;
+  document.getElementById('r-sub').textContent = data.sub;
+
+  const scoreEl = document.getElementById('r-score');
+  const st = getScoreStyle(data.score);
+  scoreEl.textContent = data.score;
+  scoreEl.style.background = st.bg;
+  scoreEl.style.color = st.color;
+
+  document.getElementById('nutrients-list').innerHTML = data.nutrients.map(n=>`
+    <div class="nutrient-row">
+      <span class="nutrient-label">${n.name}</span>
+      <div class="bar-wrap"><div class="bar-fill" style="width:${Math.min(n.pct,100)}%;background:${getBarColor(n.status)};"></div></div>
+      <span class="nutrient-val">${n.value}</span>
+      <span class="card-badge badge-${n.status}">${n.status}</span>
+    </div>
+    <div style="font-size:11px;color:#6B8F71;margin:-6px 0 10px 100px;">${n.context}</div>
+  `).join('');
+
+  document.getElementById('verdict-text').textContent = data.verdict;
+  document.getElementById('indian-text').textContent = '🇮🇳 Indian context: ' + data.indian;
+
+  document.getElementById('alt-list').innerHTML = data.alts.map(a=>`
+    <div class="alt-item">
+      <span class="alt-item-icon">${a.icon}</span>
+      <div>
+        <div class="alt-item-name">${a.name}</div>
+        <div class="alt-item-reason">${a.reason}</div>
+      </div>
+    </div>
+  `).join('');
+
+  showTab('nutrients', document.querySelector('.result-tab'));
+}
+
+function showTab(tab, btn) {
+  ['nutrients','verdict','alternatives'].forEach(t=>{
+    document.getElementById('tab-'+t).style.display = t===tab?'block':'none';
+  });
+  document.querySelectorAll('.result-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function scrollAndLoad(key) {
+  document.getElementById('analyse').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>loadExample(key), 400);
+}
+
+function loadExample(key) {
+  const data = EXAMPLES[key];
+  document.getElementById('result-area').style.display = 'block';
+  document.getElementById('loading-state').style.display = 'block';
+  document.getElementById('result-wrapper').style.display = 'none';
+  document.getElementById('loading-text').textContent = 'Loading example...';
+  setTimeout(()=>renderResult(data), 800);
+}
+
+function handleUpload(input) {
+  const file = input.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const imgSrc = e.target.result;
+    document.getElementById('result-area').style.display = 'block';
+    document.getElementById('loading-state').style.display = 'block';
+    document.getElementById('result-wrapper').style.display = 'none';
+    const msgs = ['Reading your label...','Extracting nutrition data...','Checking FSSAI daily limits...','Finding healthy Indian alternatives...'];
+    let i=0;
+    const interval = setInterval(()=>{ i=(i+1)%msgs.length; const el=document.getElementById('loading-text'); if(el) el.textContent=msgs[i]; }, 1800);
+    try {
+      const base64 = imgSrc.split(',')[1];
+      const mediaType = imgSrc.split(';')[0].split(':')[1];
+      const res = await fetch('https://api.anthropic.com/v1/messages',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          model:'claude-sonnet-4-20250514',
+          max_tokens:1000,
+          system:`You are a nutrition analyst for Indian packaged foods. Analyse the food label image and return ONLY valid JSON with this structure: {"icon":"single emoji for this food","name":"Product name and size","sub":"Brand · Category","score":<0-100>,"nutrients":[{"name":"Calories","value":"Xkcal","pct":<integer>,"status":"safe|moderate|high","context":"plain English sentence"},{"name":"Total fat","value":"Xg","pct":<integer>,"status":"safe|moderate|high","context":"..."},{"name":"Sodium","value":"Xmg","pct":<integer>,"status":"safe|moderate|high","context":"..."},{"name":"Sugar","value":"Xg","pct":<integer>,"status":"safe|moderate|high","context":"..."},{"name":"Protein","value":"Xg","pct":<integer>,"status":"safe|moderate|high","context":"..."},{"name":"Carbs","value":"Xg","pct":<integer>,"status":"safe|moderate|high","context":"..."}],"verdict":"2-3 sentence plain English verdict","indian":"1-2 sentences Indian dietary context","alts":[{"icon":"emoji","name":"fruit or vegetable","reason":"specific reason"},{"icon":"emoji","name":"second option","reason":"..."},{"icon":"emoji","name":"third option","reason":"..."}]}. Use FSSAI daily limits: Calories 2000kcal, Fat 60g, Sodium 2400mg, Sugar 25g, Protein 50g, Carbs 300g. Status: safe<20%, moderate 20-40%, high>40%. Health score 70+=healthy,45-69=moderate,<45=poor. Return ONLY JSON, no markdown.`,
+          messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mediaType,data:base64}},{type:'text',text:'Analyse this food label.'}]}]
+        })
+      });
+      clearInterval(interval);
+      const d = await res.json();
+      const text = d.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+      const parsed = JSON.parse(text.replace(/```json|```/g,'').trim());
+      renderResult(parsed);
+    } catch(err) {
+      clearInterval(interval);
+      document.getElementById('loading-text').textContent = 'Could not read this label clearly. Try a well-lit, focused photo.';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// Scroll animations
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.12});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
